@@ -13,48 +13,44 @@
  * Dependencies: rsync & php
  */
 
-// ****************************************************************
-
-/* User servicable variables
- */
+// Load configuration from config file
+$config_txt = explode(";", file_get_contents("/etc/timetraveler/config"));
+$config = json_decode($config[1], true);
 
 // Location for storing the backups, this can either be a mounted
 // network location or a locally attached external storage device.
-$backup_dir = "/mnt/Backups";
+$backup_dir = $config['backup_dir'];
 
 // System timezone
-$sys_timezone = "America/New_York";
+$sys_timezone = $config['sys_timezone'];
 
 // Backup tags filename
-$json_tags = "backup_tags.json";
+$json_tags = $config['embedded_tags_file'];
 
 // MySQL root password
-$mysql_root_password = "your_password";
+$mysql_root_password = $config['mysql_root_passwd'];
 
 // List of excludes
-$excludes = array(
-	"/var/www/movies.virajchitnis.com/converted/*",
-	"/var/cache/squid/*"
-);
+$excludes = $config['excludes'];
 
 // Keep monthly backups for x months
-$monthly_backups = 6;
+$monthly_backups = $config['monthly_backups'];
 
 // Keep weekly backups for x weeks
-$weekly_backups = 4;
+$weekly_backups = $config['weekly_backups'];
 
 // Keep daily backups for x days
-$daily_backups = 7;
+$daily_backups = $config['daily_backups'];
 
 // Keep hourly backups for x hours
-$hourly_backups = 24;
+$hourly_backups = $config['hourly_backups'];
 
-// ****************************************************************
-
-// Non user servicable variables
-// Do not change these variables unless you know what you are doing.
+// Variable for keeping track of the last backup
 $latest_backup;
+
+// Current time from unix epoch
 $curr_epoch_time = time();
+
 // Directories to always be excluded
 $system_excludes = array(
 	"/lost+found",
