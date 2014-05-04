@@ -13,6 +13,12 @@
  * Dependencies: rsync & php
  */
 
+// Display version info and exit if the version flag is passed
+if ((array_search("-v", $argv)) || (array_search("--version", $argv))) {
+	echo "\nVersion 1.0_beta\n";
+	exit;
+}
+
 // Load configuration from config file
 $config_txt = explode(";", file_get_contents("/etc/timetraveler/config"));
 $config = json_decode($config[1], true);
@@ -26,6 +32,9 @@ $sys_timezone = $config['sys_timezone'];
 
 // Backup tags filename
 $json_tags = $config['embedded_tags_file'];
+
+// MySQL backup enabled/disabled
+$mysql_backup = $config['mysql_backup'];
 
 // MySQL root password
 $mysql_root_password = $config['mysql_root_passwd'];
@@ -140,13 +149,17 @@ $tags = array(
 file_put_contents("/root/".$json_tags, json_encode($tags));
 
 // Backup all databases
-exec("mysqldump -u root -p".escapeshellarg($mysql_root_password)." --events --all-databases > /root/mysql_backup.sql");
+if ($mysql_backup) {
+	exec("mysqldump -u root -p".escapeshellarg($mysql_root_password)." --events --all-databases > /root/mysql_backup.sql");
+}
 
 // Backup the current system root
 echo shell_exec("rsync -aAv --delete --link-dest=".escapeshellarg($backup_dir)."/".escapeshellarg($latest_backup)." / ".escapeshellarg($backup_dir)."/".escapeshellarg(date('Y-m-d-H-i-s')).".backup --exclude={".implode(",", $system_excludes).",".implode(",", $excludes)."}");
 
 // Final cleanup
-exec("rm /root/mysql_backup.sql");
+if ($mysql_backup) {
+	exec("rm /root/mysql_backup.sql");
+}
 exec("/root/".escapeshellarg($json_tags));
 
 // Backup complete

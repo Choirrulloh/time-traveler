@@ -12,6 +12,8 @@ The configuration variables are -
 							tag the backups.
 	embedded_tags_file -	The file in which the tags for each backup will be
 							stored in.
+	mysql_backup -			Change this variable to false if you dont have MySQL
+							installed or you do not wish to back it up.
 	mysql_root_passwd -		This is the password for the MySQL root user. Use
 							this if you wish to backup your MySQL databases.
 	monthly_backups -		The number of monthly backups to preserve.
@@ -32,6 +34,7 @@ below, please do not modify it.
     "backup_dir": "/mnt/Backups",
     "sys_timezone": "America/New_York",
     "embedded_tags_file": "backup_tags.json",
+	"mysql_backup": true,
     "mysql_root_passwd": "your_password",
     "monthly_backups": 6,
     "weekly_backups": 4,
