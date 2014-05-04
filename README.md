@@ -23,25 +23,25 @@ Installation
 2. Untar it in some temporary location using:
 
 	```shell
-	`tar -zxvf time-traveler-1.0_beta.tar.gz`
+	tar -zxvf time-traveler-1.0_beta.tar.gz
 	```
 	
 3. Go to the extracted directory:
 
 	```shell
-	`cd time-traveler-1.0_beta`
+	cd time-traveler-1.0_beta
 	```
 	
 4. Run the installation script:
 
 	```shell
-	`./install.sh`
+	./install.sh
 	```
 	
 5. Modify the config file to suit your needs:
 
 	```shell
-	`sudo nano /etc/timetraveler/config`
+	sudo nano /etc/timetraveler/config
 	```
 	
 6. Add a crontab to the root user:
