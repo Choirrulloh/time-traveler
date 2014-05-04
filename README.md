@@ -16,29 +16,29 @@ Installation
 
 1. Download the tarball for the release you wish to use:
 
-	`wget https://github.com/virajchitnis/time-traveler/releases/download/v1.0_beta/time-traveler-1.0_beta.tar.gz`
+	wget https://github.com/virajchitnis/time-traveler/releases/download/v1.0_beta/time-traveler-1.0_beta.tar.gz
 
 2. Untar it in some temporary location using:
 
-	`tar -zxvf time-traveler-1.0_beta.tar.gz`
+	tar -zxvf time-traveler-1.0_beta.tar.gz
 	
 3. Go to the extracted directory:
 
-	`cd time-traveler-1.0_beta`
+	cd time-traveler-1.0_beta
 	
 4. Run the installation script:
 
-	`./install.sh`
+	./install.sh
 	
 5. Modify the config file to suit your needs:
 
-	`sudo nano /etc/timetraveler/config`
+	sudo nano /etc/timetraveler/config
 	
 6. Add a crontab to the root user:
 
-	`sudo crontab -e`
+	sudo crontab -e
 	
-	`@hourly nice -n 10 timetraveler >> /var/log/timetraveler/backup.log 2>&1`
+	@hourly nice -n 10 timetraveler >> /var/log/timetraveler/backup.log 2>&1
 	
 License
 -------
