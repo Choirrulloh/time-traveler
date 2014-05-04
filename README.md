@@ -16,9 +16,9 @@ Installation
 
 1. Download the tarball for the release you wish to use:
 
-```shell
-wget https://github.com/virajchitnis/time-traveler/releases/download/v1.0_beta/time-traveler-1.0_beta.tar.gz
-```
+	```shell
+	wget https://github.com/virajchitnis/time-traveler/releases/download/v1.0_beta/time-traveler-1.0_beta.tar.gz
+	```
 
 2. Untar it in some temporary location using:
 
