@@ -21,3 +21,4 @@ cp uninstall.sh tarballs/temp/.
 cd tarballs
 mv temp time-traveler-${VERSION}
 tar -zcvf time-traveler-${VERSION}.tar.gz time-traveler-${VERSION}
+rm -r time-traveler-${VERSION}
