@@ -29,7 +29,7 @@ $sys_timezone = "America/New_York";
 $json_tags = "backup_tags.json";
 
 // MySQL root password
-$mysql_root_password = "nfscarbon";
+$mysql_root_password = "your_password";
 
 // List of excludes
 $excludes = array(

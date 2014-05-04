@@ -1,0 +1,44 @@
+The JSON below is used for the configuration of the time-traveler
+utility. Please change the right side of each line to match your
+needs. 
+If the structure of the JSON gets changed in an invalid form, the
+time-traveler utility will fail to function as intended.
+
+The configuration variables are -
+	backup_dir - 			Location for storing the backups, this can either
+							be a mounted network location or a locally attached
+							external storage device.
+	sys_timezone -			The system timezone, this is required to properly
+							tag the backups.
+	embedded_tags_file -	The file in which the tags for each backup will be
+							stored in.
+	mysql_root_passwd -		This is the password for the MySQL root user. Use
+							this if you wish to backup your MySQL databases.
+	monthly_backups -		The number of monthly backups to preserve.
+	weekly_backups -		The number of weekly backups to preserve.
+	daily_backups -			The number of daily backups to preserve.
+	hourly_backups -		The number of hourly backups to preserve.
+	excludes -				The directories or files to exclude from the backup.
+							The paths for these locations must be relative to
+							the system root.
+							Directories such as /dev, /proc, /tmp, /run, /sys,
+							/lost+found, /mnt and /media are excluded by default,
+							they do not need to be added to this list.
+
+The semi-colon below is used to separate this text from the JSON
+below, please do not modify it.
+;
+{
+    "backup_dir": "/mnt/Backups",
+    "sys_timezone": "America/New_York",
+    "embedded_tags_file": "backup_tags.json",
+    "mysql_root_passwd": "your_password",
+    "monthly_backups": 6,
+    "weekly_backups": 4,
+    "daily_backups": 7,
+    "hourly_backups": 24,
+    "excludes": [
+        "/var/www/movies.virajchitnis.com/converted/*",
+        "/var/cache/squid/*"
+    ]
+}
